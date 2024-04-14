@@ -11,5 +11,5 @@ public record LivroRecordDto(
         @NotBlank String autor,
         @NotBlank String descricao,
         @NotBlank String anoEdicao,
-        @NotBlank Double preco
+        @NotBlank String preco
 ) {}

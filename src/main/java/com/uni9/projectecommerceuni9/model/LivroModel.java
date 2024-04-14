@@ -1,6 +1,7 @@
 package com.uni9.projectecommerceuni9.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Getter
@@ -17,30 +18,39 @@ public class LivroModel {
     @Column
     Long id;
 
+    @NotNull
     @Column
     String titulo;
 
+    @NotNull
     @Column
     String linkImagem;
 
+    @NotNull
     @Column
     String numeroPaginas;
 
+    @NotNull
     @Column
     String idioma;
 
+    @NotNull
     @Column
     String editora;
 
+    @NotNull
     @Column
     String autor;
 
+    @NotNull
     @Column
     String descricao;
 
+    @NotNull
     @Column
     String anoEdicao;
 
+    @NotNull
     @Column
-    Double preco;
+    String preco;
 }
