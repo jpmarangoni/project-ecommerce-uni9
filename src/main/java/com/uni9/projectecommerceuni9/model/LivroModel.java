@@ -1,7 +1,6 @@
 package com.uni9.projectecommerceuni9.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Getter
@@ -15,42 +14,33 @@ public class LivroModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
+    @Column(name = "id")
     Long id;
 
-    @NotNull
-    @Column
+    @Column(name = "titulo")
     String titulo;
 
-    @NotNull
-    @Column
+    @Column(name = "linkImagem")
     String linkImagem;
 
-    @NotNull
-    @Column
+    @Column(name = "numeroPaginas")
     String numeroPaginas;
 
-    @NotNull
-    @Column
+    @Column(name = "idioma")
     String idioma;
 
-    @NotNull
-    @Column
+    @Column(name = "editora")
     String editora;
 
-    @NotNull
-    @Column
+    @Column(name = "autor")
     String autor;
 
-    @NotNull
-    @Column
+    @Column(name = "descricao")
     String descricao;
 
-    @NotNull
-    @Column
+    @Column(name = "anoEdicao")
     String anoEdicao;
 
-    @NotNull
-    @Column
+    @Column(name = "preco")
     String preco;
 }
