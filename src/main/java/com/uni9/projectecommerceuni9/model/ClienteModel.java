@@ -18,26 +18,26 @@ public class ClienteModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    Long id;
+    private Long id;
 
     @Column(name = "nome")
-    String nome;
+    private String nome;
 
-    @OneToMany
-    @JoinColumn(name = "endereco", referencedColumnName = "endereco")
-    List<EnderecoModel> endereco;
+    @OneToMany(mappedBy = "logradouro")
+//    @JoinColumn(name = "endereco", referencedColumnName = "logradouro")
+    private List<EnderecoModel> endereco;
 
-    @OneToMany
-    @JoinColumn(name = "telefones", referencedColumnName = "telefone")
-    List<TelefoneModel> telefones;
+    @OneToMany(mappedBy = "telefone")
+//    @JoinColumn(name = "telefone", referencedColumnName = "telefone")
+    private List<TelefoneModel> telefones;
 
     @Column(name = "email")
-    String email;
+    private String email;
 
     @Column(name = "cpf")
-    String cpf;
+    private String cpf;
 
     @Column(name = "cnpj")
-    String cnpj;
+    private String cnpj;
 
 }

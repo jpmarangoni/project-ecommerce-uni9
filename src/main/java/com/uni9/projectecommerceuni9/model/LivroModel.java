@@ -15,32 +15,32 @@ public class LivroModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    Long id;
+    private Long id;
 
     @Column(name = "titulo")
-    String titulo;
+    private String titulo;
 
     @Column(name = "linkImagem")
-    String linkImagem;
+    private String linkImagem;
 
     @Column(name = "numeroPaginas")
-    String numeroPaginas;
+    private String numeroPaginas;
 
     @Column(name = "idioma")
-    String idioma;
+    private String idioma;
 
     @Column(name = "editora")
-    String editora;
+    private String editora;
 
     @Column(name = "autor")
-    String autor;
+    private String autor;
 
     @Column(name = "descricao")
-    String descricao;
+    private String descricao;
 
     @Column(name = "anoEdicao")
-    String anoEdicao;
+    private String anoEdicao;
 
     @Column(name = "preco")
-    String preco;
+    private String preco;
 }

@@ -15,9 +15,8 @@ public class TelefoneModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    Long id;
+    private Long id;
 
     @Column(name = "telefone")
-    String telefone;
-
+    private String telefone;
 }
