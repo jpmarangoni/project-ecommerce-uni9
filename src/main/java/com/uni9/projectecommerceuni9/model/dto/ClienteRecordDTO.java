@@ -11,7 +11,7 @@ import java.util.List;
 
 public record ClienteRecordDTO(
         @NotBlank String nome,
-        @NotBlank EnderecoModel endereco,
+        @NotBlank List<EnderecoModel> endereco,
         @NotBlank List<TelefoneModel> telefones,
         @NotBlank @Email String email,
         @CPF String cpf,

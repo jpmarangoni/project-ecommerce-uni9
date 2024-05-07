@@ -23,9 +23,9 @@ public class ClienteModel {
     @Column(name = "nome")
     String nome;
 
-    @OneToOne
+    @OneToMany
     @JoinColumn(name = "endereco", referencedColumnName = "endereco")
-    EnderecoModel endereco;
+    List<EnderecoModel> endereco;
 
     @OneToMany
     @JoinColumn(name = "telefones", referencedColumnName = "telefone")
