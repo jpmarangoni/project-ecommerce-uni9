@@ -1,19 +1,18 @@
 package com.uni9.projectecommerceuni9.model.dto;
 
-import com.uni9.projectecommerceuni9.model.EnderecoModel;
-import com.uni9.projectecommerceuni9.model.TelefoneModel;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import java.util.List;
 import org.hibernate.validator.constraints.br.CNPJ;
 import org.hibernate.validator.constraints.br.CPF;
 
-import java.util.List;
-
 public record ClienteRecordDTO(
-        @NotBlank String nome,
-        @NotBlank List<EnderecoModel> endereco,
-        @NotBlank List<TelefoneModel> telefones,
-        @NotBlank @Email String email,
-        @CPF String cpf,
-        @CNPJ String cnpj
-        ) {}
+    Long id,
+    @NotBlank String nome,
+    @NotNull @Valid List<EnderecoRecordDTO> enderecos,
+    @NotNull @Valid List<TelefoneRecordDTO> telefones,
+    @NotBlank @Email String email,
+    @CPF String cpf,
+    @CNPJ String cnpj) {}

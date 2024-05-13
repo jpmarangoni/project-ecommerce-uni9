@@ -8,6 +8,7 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(of = "id")
 @Table(name = "TB_LIVRO")
 @Entity(name = "TB_LIVRO")
 public class LivroModel {

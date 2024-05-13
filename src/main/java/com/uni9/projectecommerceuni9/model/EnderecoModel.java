@@ -1,6 +1,8 @@
 package com.uni9.projectecommerceuni9.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 @Getter
@@ -8,33 +10,45 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(of = "id")
+@Valid
 @Table(name = "TB_ENDERECO")
 @Entity(name = "TB_ENDERECO")
 public class EnderecoModel {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id_endereco")
+  private Long id;
 
-    @Column(name = "logradouro")
-    private String logradouro;
+  @NotBlank
+  @Column(name = "logradouro")
+  private String logradouro;
 
-    @Column(name = "mumero")
-    private String numero;
+  @NotBlank
+  @Column(name = "mumero")
+  private String numero;
 
-    @Column(name = "complemento")
-    private String complemento;
+  @Column(name = "complemento")
+  private String complemento;
 
-    @Column(name = "cidade")
-    private String cidade;
+  @NotBlank
+  @Column(name = "cidade")
+  private String cidade;
 
-    @Column(name = "cep")
-    private String cep;
+  @NotBlank
+  @Column(name = "cep")
+  private String cep;
 
-    @Column(name = "bairro")
-    private String bairro;
+  @NotBlank
+  @Column(name = "bairro")
+  private String bairro;
 
-    @Column(name = "uf")
-    private String uf;
+  @NotBlank
+  @Column(name = "uf")
+  private String uf;
+
+  @ManyToOne
+  @JoinColumn(name = "clienteId", referencedColumnName = "id")
+  private ClienteModel cliente;
 }

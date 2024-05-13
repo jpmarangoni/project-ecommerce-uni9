@@ -1,18 +1,18 @@
 package com.uni9.projectecommerceuni9.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-import lombok.*;
-
 import java.util.List;
+import lombok.*;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 @Table(name = "TB_CLIENTE")
-@Entity(name = "TB_CLIENTE")
 public class ClienteModel {
 
     @Id
@@ -22,13 +22,13 @@ public class ClienteModel {
 
     @Column(name = "nome")
     private String nome;
-
-    @OneToMany(mappedBy = "logradouro")
-//    @JoinColumn(name = "endereco", referencedColumnName = "logradouro")
-    private List<EnderecoModel> endereco;
-
-    @OneToMany(mappedBy = "telefone")
-//    @JoinColumn(name = "telefone", referencedColumnName = "telefone")
+    
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<EnderecoModel> enderecos;
+    
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<TelefoneModel> telefones;
 
     @Column(name = "email")
