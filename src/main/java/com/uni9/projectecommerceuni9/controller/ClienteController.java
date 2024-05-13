@@ -2,8 +2,6 @@ package com.uni9.projectecommerceuni9.controller;
 
 import com.uni9.projectecommerceuni9.model.dto.ClienteRecordDTO;
 import com.uni9.projectecommerceuni9.service.ClienteService;
-import com.uni9.projectecommerceuni9.service.EnderecoService;
-import com.uni9.projectecommerceuni9.service.TelefoneService;
 import jakarta.validation.Valid;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +13,6 @@ import org.springframework.web.bind.annotation.*;
 public class ClienteController {
 
   @Autowired ClienteService clienteService;
-
-  @Autowired EnderecoService enderecoService;
-
-  @Autowired TelefoneService telefoneService;
 
   @PostMapping("/cliente")
   public ResponseEntity<ClienteRecordDTO> saveCliente(
