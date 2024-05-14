@@ -10,10 +10,8 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(of = "id")
-@Valid
+@Entity
 @Table(name = "TB_ENDERECO")
-@Entity(name = "TB_ENDERECO")
 public class EnderecoModel {
 
   @Id

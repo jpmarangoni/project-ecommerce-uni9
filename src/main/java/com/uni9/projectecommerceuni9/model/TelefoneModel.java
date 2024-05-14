@@ -10,8 +10,6 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(of = "id")
-@Valid
 @Entity
 @Table(name = "TB_TELEFONE")
 public class TelefoneModel {
