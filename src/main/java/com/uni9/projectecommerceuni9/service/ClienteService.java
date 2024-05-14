@@ -1,5 +1,6 @@
 package com.uni9.projectecommerceuni9.service;
 
+import com.uni9.projectecommerceuni9.enums.TipoCliente;
 import com.uni9.projectecommerceuni9.mapper.ClienteMapper;
 import com.uni9.projectecommerceuni9.model.ClienteModel;
 import com.uni9.projectecommerceuni9.model.EnderecoModel;
@@ -31,6 +32,7 @@ public class ClienteService {
   public ClienteRecordDTO save(ClienteRecordDTO clienteDTO) {
     ClienteModel cliente = clienteMapper.dtoToModel(clienteDTO);
 
+    verificaTipoCliente(cliente);
     criarTelefone(clienteDTO.telefones(), cliente);
     criarEndereco(clienteDTO.enderecos(), cliente);
     ClienteModel clienteSalvo = clienteRepository.save(cliente);
@@ -46,6 +48,14 @@ public class ClienteService {
   public ClienteRecordDTO getById(Long id) {
     ClienteModel cliente = clienteRepository.getById(id);
     return clienteMapper.modelToDto(cliente);
+  }
+
+  private void verificaTipoCliente(ClienteModel cliente){
+    if(cliente.getCnpj() != null){
+      cliente.setTipoCliente(TipoCliente.CLIENTE_PJ.getTipoCliente());
+    } else {
+      cliente.setTipoCliente(TipoCliente.CLIENTE_PF.getTipoCliente());
+    }
   }
 
   private void criarTelefone(List<TelefoneRecordDTO> telefones, ClienteModel cliente) {

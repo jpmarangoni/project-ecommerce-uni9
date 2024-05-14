@@ -15,4 +15,5 @@ public record ClienteRecordDTO(
     @NotNull @Valid List<TelefoneRecordDTO> telefones,
     @NotBlank @Email String email,
     @CPF String cpf,
-    @CNPJ String cnpj) {}
+    @CNPJ String cnpj,
+    String tipoCliente) {}

@@ -1,5 +1,6 @@
 package com.uni9.projectecommerceuni9.model;
 
+import com.uni9.projectecommerceuni9.enums.TipoCliente;
 import jakarta.persistence.*;
 import java.util.List;
 import lombok.*;
@@ -40,4 +41,6 @@ public class ClienteModel {
     @Column(name = "cnpj")
     private String cnpj;
 
+    @Column(name = "tipo_cliente")
+    private String tipoCliente;
 }
