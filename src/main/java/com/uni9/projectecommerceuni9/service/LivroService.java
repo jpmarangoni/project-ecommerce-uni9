@@ -24,7 +24,7 @@ public class LivroService {
   }
 
   @Transactional
-  public Optional<LivroModel> getById(Long id) {
-    return livroRepository.findById(id);
+  public LivroModel getById(Long id) {
+    return livroRepository.buscaLivroPorId(id);
   }
 }

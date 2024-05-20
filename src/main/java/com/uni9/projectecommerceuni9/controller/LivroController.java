@@ -30,7 +30,7 @@ public class LivroController {
   }
 
   @GetMapping("/livro/{id}")
-  public ResponseEntity<Optional<LivroModel>> getById(@PathVariable("id") Long id) {
+  public ResponseEntity<LivroModel> getById(@PathVariable("id") Long id) {
     return ResponseEntity.status(HttpStatus.OK).body(livroService.getById(id));
   }
 }

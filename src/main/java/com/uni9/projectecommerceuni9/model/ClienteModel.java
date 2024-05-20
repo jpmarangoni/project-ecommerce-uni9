@@ -1,6 +1,5 @@
 package com.uni9.projectecommerceuni9.model;
 
-import com.uni9.projectecommerceuni9.enums.TipoCliente;
 import jakarta.persistence.*;
 import java.util.List;
 import lombok.*;
