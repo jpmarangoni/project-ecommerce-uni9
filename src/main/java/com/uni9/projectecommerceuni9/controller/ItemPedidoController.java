@@ -17,7 +17,6 @@ public class ItemPedidoController {
 
     @PostMapping("/itens")
     public ResponseEntity<Object> saveItens(@RequestBody CarrinhoRecordDTO carrinhoRecordDTO){
-        carrinhoService.saveItemPedido(carrinhoRecordDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }

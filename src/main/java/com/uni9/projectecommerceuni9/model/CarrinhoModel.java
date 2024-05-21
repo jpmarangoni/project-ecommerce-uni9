@@ -10,7 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "TB_ITEM_PEDIDO")
+@Table(name = "TB_CARRINHO")
 public class CarrinhoModel {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,10 +23,14 @@ public class CarrinhoModel {
   @JoinColumn(name = "livros", referencedColumnName = "id")
   private List<LivroModel> livros;
 
+  @OneToOne(mappedBy = "carrinho", cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REMOVE})
+  @JoinColumn(name = "cliente_id", referencedColumnName = "id")
+  private ClienteModel cliente;
+
   @Column(name = "status_carrinho")
   private String statusCarrinho;
 
-  @ManyToOne
-  @JoinColumn(referencedColumnName = "id")
-  private PedidoModel pedido;
+//  @ManyToOne(cascade = CascadeType.PERSIST)
+//  @JoinColumn(referencedColumnName = "id")
+//  private PedidoModel pedido;
 }

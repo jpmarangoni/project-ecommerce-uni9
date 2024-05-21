@@ -10,7 +10,6 @@ import com.uni9.projectecommerceuni9.model.PedidoModel;
 import com.uni9.projectecommerceuni9.model.dto.CarrinhoRecordDTO;
 import com.uni9.projectecommerceuni9.model.dto.LivroRecordDto;
 import com.uni9.projectecommerceuni9.model.dto.PedidoRecordDTO;
-import com.uni9.projectecommerceuni9.repository.CarrinhoRepository;
 import com.uni9.projectecommerceuni9.repository.LivroRepository;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +19,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class CarrinhoService {
 
-  @Autowired CarrinhoRepository carrinhoRepository;
-
   @Autowired LivroRepository livroRepository;
 
   @Autowired CarrinhoMapper carrinhoMapper;
@@ -30,21 +27,8 @@ public class CarrinhoService {
 
   @Autowired LivroMapper livroMapper;
 
-
-  public CarrinhoRecordDTO saveItemPedido(CarrinhoRecordDTO carrinhoDTO) {
-    CarrinhoModel carrinhoModel = carrinhoMapper.dtoToModel(carrinhoDTO);
-    if (carrinhoModel.getStatusCarrinho() == null) {
-      carrinhoModel.setStatusCarrinho(StatusCarrinho.TEM_CARRINHO.getStatusCarrinho());
-      carrinhoModel.setLivros(addLivros(carrinhoDTO.livros()));
-      carrinhoModel.setQuantidade(carrinhoDTO.quantidade());
-      CarrinhoModel pedido = carrinhoRepository.save(carrinhoModel);
-      return carrinhoMapper.modelToDto(pedido);
-    }
-    CarrinhoModel carrinho = carrinhoRepository.save(carrinhoModel);
-    return carrinhoMapper.modelToDto(carrinho);
-  }
-
-  public List<CarrinhoModel> saveItem(List<CarrinhoRecordDTO> carrinhoListDTO, PedidoRecordDTO pedidoDTO) {
+  public List<CarrinhoModel> saveItem(
+      List<CarrinhoRecordDTO> carrinhoListDTO, PedidoRecordDTO pedidoDTO) {
     List<CarrinhoModel> carrinhoList = carrinhoMapper.dtoToModelList(carrinhoListDTO);
     List<CarrinhoModel> itemList = new ArrayList<>(carrinhoListDTO.size());
     PedidoModel pedido = pedidoMapper.dtoToModel(pedidoDTO);
@@ -53,12 +37,10 @@ public class CarrinhoService {
           if (salvaItem.getStatusCarrinho() == null) {
             salvaItem.setStatusCarrinho(StatusCarrinho.TEM_CARRINHO.getStatusCarrinho());
             salvaItem.setLivros(addLivros(livroMapper.modelToDtoList(salvaItem.getLivros())));
-            salvaItem.setPedido(pedido);
-            CarrinhoModel item = carrinhoRepository.save(salvaItem);
-            itemList.add(item);
+            salvaItem.setCliente(pedido.getCliente());
+            itemList.add(salvaItem);
           } else {
-            CarrinhoModel carrinho = carrinhoRepository.save(salvaItem);
-            itemList.add(carrinho);
+            itemList.add(salvaItem);
           }
         });
     pedido.setItensCarrinho(itemList);

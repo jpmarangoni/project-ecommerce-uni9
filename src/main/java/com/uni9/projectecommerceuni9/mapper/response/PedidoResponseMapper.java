@@ -13,4 +13,6 @@ public interface PedidoResponseMapper {
 
     PedidoRecordDTO responseToRequest(PedidoRecordResponseDTO pedidoResponse);
 
+    PedidoRecordResponseDTO modelToResponseDto(PedidoModel pedidoModel);
+
 }

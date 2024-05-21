@@ -42,4 +42,8 @@ public class ClienteModel {
 
     @Column(name = "tipo_cliente")
     private String tipoCliente;
+
+    @OneToOne
+    @JoinColumn(name = "carrinho_id", referencedColumnName = "id")
+    private CarrinhoModel carrinho;
 }

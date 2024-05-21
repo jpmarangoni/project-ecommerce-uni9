@@ -34,7 +34,7 @@ public class PedidoModel {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime dataPedido;
 
-    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "id", cascade = CascadeType.PERSIST)
     @Column(name = "itens_carrinho")
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<CarrinhoModel> itensCarrinho;
