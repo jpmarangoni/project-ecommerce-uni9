@@ -1,5 +1,7 @@
 package com.uni9.projectecommerceuni9.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -42,5 +44,9 @@ public class LivroModel {
     private String anoEdicao;
 
     @Column(name = "preco")
-    private String preco;
+    private Double preco;
+
+    public LivroModel(Long id){
+        this.id = id;
+    }
 }

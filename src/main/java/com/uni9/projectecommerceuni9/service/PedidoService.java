@@ -39,11 +39,11 @@ public class PedidoService {
     @Transactional
     public PedidoRecordResponseDTO save(PedidoRecordDTO pedidoDTO){
 //        criaPedido(pedidoModel);
-        List<CarrinhoModel> carrinhoDTO = carrinhoService.saveItem(pedidoDTO.itensCarrinho(), pedidoDTO);
+//        CarrinhoModel carrinhoDTO = carrinhoService.saveItem(/*pedidoDTO.itensCarrinho()*/ pedidoDTO);
         PedidoModel pedidoModel = pedidoMapper.dtoToModel(pedidoDTO);
-        ClienteModel cliente = clienteRepository.getById(pedidoModel.getClienteId());
-        pedidoModel.setItensCarrinho(carrinhoDTO);
-        pedidoModel.setCliente(cliente);
+//        ClienteModel cliente = clienteRepository.getById(pedidoModel.getClienteId());
+//        pedidoModel.setItensCarrinho(carrinhoDTO);
+//        pedidoModel.setCliente(cliente);
         if(pedidoModel.getStatusPedido() == null){
             pedidoModel.setStatusPedido(StatusPedido.EM_ABERTO.getStatusPedido());
         }

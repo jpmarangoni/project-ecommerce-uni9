@@ -23,25 +23,25 @@ public class PedidoModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JoinColumn(name = "cliente", referencedColumnName = "id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cliente_id", referencedColumnName = "id")
     private ClienteModel cliente;
-
-    @Column(name = "cliente_id")
-    private Long clienteId;
 
     @Column(name = "data_pedido")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime dataPedido;
 
-    @OneToMany(mappedBy = "id", cascade = CascadeType.PERSIST)
-    @Column(name = "itens_carrinho")
-    @LazyCollection(LazyCollectionOption.FALSE)
-    private List<CarrinhoModel> itensCarrinho;
+    @OneToOne(fetch = FetchType.LAZY)
+    @PrimaryKeyJoinColumn(name = "carrinho_id")
+    private CarrinhoModel carrinho;
 
     @Column(name = "status_pedido")
     private String statusPedido;
 
     @Column(name = "valor_total")
     private Double valorTotal;
+
+    public PedidoModel(Long id){
+        this.id = id;
+    }
 }

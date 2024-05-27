@@ -1,6 +1,7 @@
 package com.uni9.projectecommerceuni9.model.dto;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public record LivroRecordDto(
     Long id,
@@ -12,4 +13,4 @@ public record LivroRecordDto(
     @NotBlank String autor,
     @NotBlank String descricao,
     @NotBlank String anoEdicao,
-    @NotBlank String preco) {}
+    @NotNull Double preco) {}

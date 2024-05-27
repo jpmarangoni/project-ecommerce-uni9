@@ -16,21 +16,21 @@ public class CarrinhoModel {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column(name = "quantidade")
-  private Integer quantidade;
+  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  @JoinColumn(name = "carrinho")
+  private List<ItemCarrinho> itens;
 
-  @OneToMany
-  @JoinColumn(name = "livros", referencedColumnName = "id")
-  private List<LivroModel> livros;
-
-  @OneToOne(mappedBy = "carrinho", cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REMOVE})
-  @JoinColumn(name = "cliente_id", referencedColumnName = "id")
+  @OneToOne(fetch = FetchType.LAZY)
+  @PrimaryKeyJoinColumn(name = "cliente_id", referencedColumnName = "id")
   private ClienteModel cliente;
+
+  @OneToOne(fetch = FetchType.LAZY)
+  @PrimaryKeyJoinColumn(name = "pedido_id", referencedColumnName = "id")
+  private PedidoModel pedido;
 
   @Column(name = "status_carrinho")
   private String statusCarrinho;
 
-//  @ManyToOne(cascade = CascadeType.PERSIST)
-//  @JoinColumn(referencedColumnName = "id")
-//  private PedidoModel pedido;
+  @Column(name = "valor_total")
+  private Double valorTotal;
 }

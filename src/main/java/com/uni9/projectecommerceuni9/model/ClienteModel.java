@@ -3,8 +3,6 @@ package com.uni9.projectecommerceuni9.model;
 import jakarta.persistence.*;
 import java.util.List;
 import lombok.*;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 
 @Getter
 @Setter
@@ -24,11 +22,11 @@ public class ClienteModel {
     private String nome;
     
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
-    @LazyCollection(LazyCollectionOption.FALSE)
+//    @LazyCollection(LazyCollectionOption.FALSE)
     private List<EnderecoModel> enderecos;
     
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
-    @LazyCollection(LazyCollectionOption.FALSE)
+//    @LazyCollection(LazyCollectionOption.FALSE)
     private List<TelefoneModel> telefones;
 
     @Column(name = "email")
@@ -43,7 +41,15 @@ public class ClienteModel {
     @Column(name = "tipo_cliente")
     private String tipoCliente;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "carrinho_id", referencedColumnName = "id")
     private CarrinhoModel carrinho;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "pedido_id", referencedColumnName = "id")
+    private List<PedidoModel> pedido;
+
+    public ClienteModel(Long id){
+        this.id = id;
+    }
 }
